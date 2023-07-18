@@ -1,0 +1,217 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #dbd8c7;
+    margin: 0px;
+}
+
+/* HEADER */
+#header {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+}
+#header img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 100%;
+    z-index: -5;
+    overflow-y: hidden;
+}
+#header_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 2;
+}
+#header_title {
+    font-size: calc(1.9vh + 2.5vw);
+    color: #dbd8c7;
+    height: 60%;
+    font-family: 'Monomaniac One', 'Times New Roman', 'Times', 'serif';
+}
+
+
+/* NAVBAR */
+#navbar{
+    
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+#navbar a{
+    padding: 0 2vw 0 2vw;
+    font-size: calc(.8vh + .5vw);
+    text-decoration: none;
+    color: #dbd8c7;
+    box-sizing: border-box;
+    border: 3px solid #ffffff00;
+}
+#navbar a:hover{
+    border-radius: 50% 50% / 10% 20%;
+    border: 3px solid;
+    transition-duration: .7s
+}
+#navbar a:hover{ 
+    background-color: rgb(0, 0, 0);
+}
+#navbar:has(a:hover){
+    transition-duration: .7s;
+    background-color: #dbd8c7b7;
+}
+#navbar:has(a:not(hover)){
+    transition-duration: .7s;
+}
+
+/* CONTENT */
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5vw;
+    width: 100%;
+}
+#main_content{
+    width: 100%;
+    height: 1000px;
+    border-radius: 20px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: calc(.85vh + 1.8vw);
+    color: rgb(233, 233, 210);
+}
+.preview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 30%;
+    box-sizing: border-box;
+    padding: 2vh 2vw;
+    border-radius: 20px;
+    border: 3px groove #dbd8c7;
+    position: relative;
+    background-color: black;
+}
+.preview img {
+    width: 40%;
+    height: 90%;
+    box-sizing: border-box;
+    padding: 10px;
+    filter: saturate(0);
+}
+.preview p{
+    width: 60%;
+    color: black;
+    height: auto;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 10px;
+    text-transform: capitalize;
+}
+#buttons {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    margin: 20px;
+}
+#buttons a {
+    font-size: calc(1.8vh + 2vw);
+    text-decoration: none;
+    color: black;
+    border-radius: 50% 50% / 10% 20%;
+    border: 3px solid;
+    background-color: #dbd8c7;
+    padding: 5px;
+}
+
+#buttons a:hover{
+    transition-duration: 1s;
+    background-color: black;
+    color: red;
+}
+#buttons a:not(hover){
+    transition-duration: .5s;
+}
+
+.preview:hover{
+    transition-duration: 0.3s;
+    background-color: #dbd8c7;
+    border: 5px;
+    width: 90%;
+}
+
+.preview:not(hover){
+    transition-duration: 0.3s;
+}
+.preview:hover img, .preview:hover p{
+ color: black;
+ filter: saturate(1);
+ transition-duration: 0.55s;
+}
+
+/* FOOTER */
+#footer {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+}
+#footer_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #dbd8c7;
+    width: 100%;
+    height: 100%;
+}
+
+#footer_content span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    box-sizing: border-box;
+    padding: 10%;
+    font-size: calc(1.3vh + .5vh);
+}
+
+@media screen and (max-width: 600px) {
+    #content {
+        padding: 1vw;
+    }
+    #header {
+        height: 20vh;
+    }
+    #footer {
+        height: 20vh;
+    }
+    .preview{
+        padding: 0;
+        height: 20%;
+    }
+    .preview img{
+        width: 60%;
+    }
+    .preview p{
+        width: 40%;
+    }
+}
