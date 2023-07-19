@@ -3,11 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url('css/index.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url('css/common.css') }}">
     <title>Index</title>
 </head>
 <body>
-    <section class="init" id="header">
+    <section id="header">
         <div id="header_content">
             <div id="navbar">
                 <a href="{{ route('Login') }}">Accedi</a>
@@ -19,7 +19,7 @@
         </div>
         <img src="{{ url('Images/Index/footer.gif') }}">
     </section>
-    <section class="init" id="content">
+    <section id="content">
         <div id="main_content">
             <div class="preview">
                 <p>

@@ -1,13 +1,22 @@
 body{
-    background-image: url("../Images/Login/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+   position: absolute;
     font-size: calc(.8vw + 1vh);
+    width: 100%;
     height: 100vh;
-    width: 90vw;
+    margin: 0;
+}
+img {
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 #signin{
-    width: 100%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -18,23 +27,36 @@ body{
     border-radius: 5px;
     background-color: rgba(32, 32, 32, 0.7);
 }
-
+#signin label span {
+    font-size: calc(.4vw + .2vh);
+}
 #Content {
-    width: 30vw;
-    height: 95vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 60%;
+}
+#SigninForm {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 #signin input[type="text"], #signin input[type="password"]{
     background-color: rgb(255,255,255,0.5);
     border: 1px solid transparent;
     width: 100%;
     height: 50%;
+    box-sizing: border-box;
+    padding: 1px;
 }
 #signin input[type="submit"]{
     background-color: rgb(255,255,255,0.5);
-    border: 0px ;
+    border: 1px solid transparent; 
     width: 100%;
 }
 #signin input:hover{
@@ -45,16 +67,44 @@ body{
 #signin input:not(hover){
     transition-duration: 1s;
 }
+#info_box{
+    width: 40%;
+    height: 40%;
+    background-color: rgba(32, 32, 32, 0.7);
+    border-radius: 10%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: content-box;
+    padding: 5%;
+}
+#info_box div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dbd8c7;
+}
 .normal{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    line-height: calc(5.5vh);
+    line-height: calc(4vh);
     color: #dbd8c7;
 }
-
+#Errore, #Exist{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 10%;
+     width: 20%;
+     font-size: calc(.2vh + .8vw);
+     color: red;
+     box-sizing: border-box;
+     padding: 5vh;
+}
 .error{
     width: 100%;
     display: flex;
@@ -64,6 +114,47 @@ body{
     line-height: calc(5.5vh);
     color: red;
 }
+
+.vanish{
+    opacity: 0;
+    transition-duration: 1s;
+}
 .hidden {
     display: none;
+}
+@media screen and (max-width:700px){
+    #SigninForm {
+        flex-direction: column;
+        width: 100%;
+        height: 90%;
+        align-items: center;
+    }
+    #signin {
+        width: 80%;
+        height: 70%;
+        box-sizing: border-box;
+        padding: 5vh;
+    }
+    #info_box {
+        width: 80%;
+        height: 20%;
+        padding: 5% 0 5% 0;
+        box-sizing: border-box;
+        align-items: center;
+    }
+    #info_box div{
+        width: 70%;
+    }
+    #signin input[type="text"], #signin input[type="password"]{
+        height: 60%;
+    }
+    #signin label{
+        height: 5%;
+    }
+    #Errore, #Exist{
+        width: 100%;
+        height: 10%;
+        padding: 0;
+        font-size: calc(.8vh + .9vw);
+    }
 }

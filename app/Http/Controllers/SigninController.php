@@ -37,7 +37,7 @@ class SigninController extends Controller
             return redirect('HomePage');
         }
         else{
-            return redirect('/');
+            return view('Signin',['Errore'=> 'true']);
         }
     }
 }

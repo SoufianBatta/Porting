@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Utenti;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -19,12 +20,17 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
         $utente = Utenti::where('Username', $username)->first();
-        if($utente && password_verify($password,$utente->Password)){
-            Session::put('email',$utente->Email);
-            return redirect('HomePage');
+        if($utente){
+            if (password_verify($password,$utente->Password)) {
+                Session::put('email',$utente->Email);
+                return redirect('HomePage');
+            }
+            else{
+                return view('Login',['Errore' => 'Password']);
+            }
         }
         else{
-            return redirect('/');
+            return view('Login',['Errore' => 'Username']);
         }
     }
 }

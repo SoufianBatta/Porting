@@ -1,15 +1,23 @@
 body{
-    background-image: url("../Images/Login/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     font-size: calc(.8vw + 1vh);
-    height: 100vh;
-    width: 90vw;
-
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+#background{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
 }
 #login{
     width: 100%;
-    height: 100%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -50,10 +58,11 @@ body{
 }
 #Content {
     width: 30vw;
-    height: 40vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 #login input{
     background-color: rgb(255,255,255,0.5);
@@ -71,4 +80,24 @@ body{
 }
 .hidden {
     display: none;
+}
+#internal_error{
+    height: 20%;
+    font-size: calc((.5vw + .3vh));
+    color: red;
+}
+#sign{
+    margin:2vh 0 2vh 0;
+}
+
+@media screen and (max-width:700px){
+    #Content {
+        width: 100%;
+    }
+    #login label{
+        font-size: calc(.7vw + 1.2vh);
+    }
+    #login {
+        width: 80%;
+    }
 }

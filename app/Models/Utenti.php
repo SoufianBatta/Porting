@@ -13,4 +13,8 @@ class Utenti extends Model
     public $incrementing = false;
 
     public $timestamps = false;
+
+    protected $attributes = array(
+        'Avatar' => '\Images\Index\pokeball_retro.png'
+    );
 }

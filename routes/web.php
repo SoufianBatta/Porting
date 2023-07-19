@@ -25,8 +25,12 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'ViewLogin'])->name('Login');
 Route::post('/login', [LoginController::class, 'Login'])->name('Login');
 
-Route::get('/singin',[SigninController::class, 'ViewSignin'])->name('Signin');
-Route::post('/singin',[SigninController::class, 'Signin'])->name('Signin');
+Route::get('/signin',[SigninController::class, 'ViewSignin'])->name('Signin');
+Route::post('/signin',[SigninController::class, 'Signin'])->name('Signin');
 
 Route::get('/HomePage',[HomePageController::class, 'ViewHomePage'])->name('HomePage');
 Route::get('/HomePage/logout',[HomePageController::class, 'Logout'])->name('Logout');
+Route::any('/HomePage/ChangeAvatar',[HomePageController::class, 'ChangeAvatar'])->name('ChangeAvatar');
+Route::any('/HomePage/ShowRequest',[HomePageController::class, 'ShowRequest']);
+Route::get('/HomePage/Pokebattle',[HomePageController::class, 'ViewPokebattle'])->name('Pokebattle');
+Route::get('/GetPokemon/{pokemon}',[HomePageController::class, 'GetPokemon']);
