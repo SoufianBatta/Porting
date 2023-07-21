@@ -48,11 +48,4 @@ class HomePageController extends Controller
         }
     }
     
-    public function ViewPokebattle(){
-        return view('PokeBattle');
-    }
-    public function GetPokemon( $poskemon) {
-        $response = Http::get("https://pokeapi.co/api/v2/pokemon/$poskemon");
-        return $response;
-    }
 }

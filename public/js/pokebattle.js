@@ -1,17 +1,17 @@
 const X_IMG = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1083533/x.png';
 const O_IMG = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1083533/circle.png';
-
+var token = null;
 getPokemon();
 let Pokemon_id = null;
 function getPokemon(){
     const choosen = Math.floor(Math.random() * 699) + 1;
     console.log(choosen);
-    fetch("http://127.0.0.1:8000/GetPokemon/"+choosen).then(onResponse);
+    fetch("http://127.0.0.1:8000/api/GetPokemon/"+choosen).then(onResponse);
 }
 
 function onResponse(result){
     if(result.ok){
-        result.text().then(onJson);
+        result.json().then(onJson);
     }
     else{
         console.error('Errore nella generazione del Pokemon');
@@ -20,31 +20,38 @@ function onResponse(result){
 
 function onJson(result){
     console.log(result);
-    // Pokemon_id = result.id;
-    // const div = document.createElement('div');
-    // const img = document.createElement('img');
-    // img.src = result.img;
-    // div.appendChild(img);
-    // const div_2 = document.createElement('div');
-    // const name = document.createElement('span');
-    // name.innerHTML = result.name;
-    // const type1 = document.createElement('span');
-    // type1.innerHTML = result.type_1;
-    // type1.id = result.type_1;
-    // div_2.appendChild(name);
-    // div_2.appendChild(type1);
-    // if(result.type_2){
-    //     const type2 = document.createElement('span');
-    //     type2.innerHTML = result.type_2;
-    //     type2.id = result.type_2;
-    //     div_2.appendChild(type2);
-    // }
-    // const Pokemon = document.querySelector('#Pokemon');
-    // const data = new FormData();
-    // data.append('Pokemon', Pokemon_id);
-    // fetch("http://localhost/hw1/post_incontro.php", {method: 'post', body: data}).then(onResponseincontro);
-    // Pokemon.appendChild(div);
-    // Pokemon.appendChild(div_2);
+    if (result['NotFound']) {
+        window.location.reload();
+    }
+    else{
+        const pokemon = result['Pokemon'];
+        Pokemon_id = pokemon.id;
+        const div = document.createElement('div');
+        const img = document.createElement('img');
+        img.src = pokemon.img;
+        div.appendChild(img);
+        const div_2 = document.createElement('div');
+        const name = document.createElement('span');
+        name.innerHTML = pokemon.Name;
+        const type1 = document.createElement('span');
+        type1.innerHTML = pokemon.Type1;
+        type1.id = pokemon.Type1;
+        div_2.appendChild(name);
+        div_2.appendChild(type1);
+        if(pokemon.Type2){
+            const type2 = document.createElement('span');
+            type2.innerHTML = pokemon.Type2;
+            type2.id = pokemon.Type2;
+            div_2.appendChild(type2);
+        }
+        const Pokemon = document.querySelector('#Pokemon');
+        const data = new FormData();
+        data.append('Pokemon', Pokemon_id);
+        data.append('_token', result.Token);
+        fetch("http://127.0.0.1:8000/api/RegistraIncontro", {method: 'post', body: data}).then(onResponseincontro);
+        Pokemon.appendChild(div);
+        Pokemon.appendChild(div_2);
+    }
 }
 
 function onResponseincontro(resp){
@@ -52,11 +59,12 @@ function onResponseincontro(resp){
         console.error("Attenzione Pokemon Non Registrato");
     }
     else{
-        resp.text().then(ontext);
+        resp.json().then(ontext);
     }
 }
 function ontext(body){
     console.log(body);
+    token = body.Token;
 }
 
 //FUNCTIONS
@@ -133,10 +141,9 @@ function DisplayResult(){
     if (final === 'X'){
         span.innerHTML = "Complimenti hai catturato il Pokemon! ora potrai vedere tutti i suoi dati nel SocialDex";
         const data = new FormData();
-        data.append('method','post');
         data.append('Pokemon', Pokemon_id);
-        data.append('catturato', 1);
-        fetch("http://localhost/hw1/post_incontro.php", {method: 'post', body: data}).then(onResponseincontro);
+        data.append('_token', token);
+        fetch("http://127.0.0.1:8000/api/CatturaPokemon", {method: 'post', body: data}).then(onResponseincontro);
     }
     else if(final === 'O' || freeboxes.length === 0) {
         span.innerHTML = "Bella Sfida! la prossima volta potrai diventare il Vincitore!";

@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SigninController;
+use App\Http\Controllers\PokemonController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -32,5 +33,7 @@ Route::get('/HomePage',[HomePageController::class, 'ViewHomePage'])->name('HomeP
 Route::get('/HomePage/logout',[HomePageController::class, 'Logout'])->name('Logout');
 Route::any('/HomePage/ChangeAvatar',[HomePageController::class, 'ChangeAvatar'])->name('ChangeAvatar');
 Route::any('/HomePage/ShowRequest',[HomePageController::class, 'ShowRequest']);
-Route::get('/HomePage/Pokebattle',[HomePageController::class, 'ViewPokebattle'])->name('Pokebattle');
-Route::get('/GetPokemon/{pokemon}',[HomePageController::class, 'GetPokemon']);
+Route::get('/HomePage/Pokebattle',[PokemonController::class, 'ViewPokebattle'])->name('Pokebattle');
+Route::get('/api/GetPokemon/{pokemon}',[PokemonController::class, 'GetPokemon']);
+Route::post('/api/RegistraIncontro', [PokemonController::class, 'RegistraIncontro']);
+Route::post('/api/CatturaPokemon', [PokemonController::class, 'CatturaPokemon']);
