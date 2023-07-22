@@ -149,16 +149,16 @@ function DisplayResult(){
         span.innerHTML = "Bella Sfida! la prossima volta potrai diventare il Vincitore!";
     }
     const button = document.createElement('button');
-    button.innerHTML = 'Torna alla homepage';
+    button.innerHTML = 'Cattura un Altro Pokemon';
     button.type = 'button';
-    button.addEventListener('click', Homepage);
+    button.addEventListener('click', Restart);
     div.appendChild(span);
     div.appendChild(button);
     const result = document.querySelector('#Result');
     result.innerHTML = "";
     result.appendChild(div);
 }
-function Homepage(){
-    window.location = "homepage.php";
+function Restart(){
+    window.location.reload();
 }
 //GAME

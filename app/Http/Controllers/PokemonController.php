@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Incontro;
 use App\Models\Pokemon;
+use App\Models\Utenti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -52,15 +54,35 @@ class PokemonController extends Controller
     public function RegistraIncontro(Request $request){
         $incontro = [
             'PokemonID' => $request['Pokemon'],
-            'Catturato' => false,
             'Utente' => Session::get('email')
         ];
-        if (!DB::table('incontro')->where('Utente', $incontro['Utente'])->where('PokemonID', $incontro['PokemonID'])->exists()) {
-            DB::table('incontro')->insert($incontro);
+        if (!Incontro::where('Utente', $incontro['Utente'])->where('PokemonID', $incontro['PokemonID'])->exists()) {
+            Incontro::create($incontro);
         }
-        return ['Incontro' => $incontro, 'Token' => csrf_token()]; 
+        return ['Token' => csrf_token()]; 
     }
     public function CatturaPokemon(Request $request){
-        return DB::table('incontro')->where('Utente', Session::get('email'))->where('PokemonID', $request['Pokemon'])->update(['Catturato' => true]);
+        Incontro::where('Utente', Session::get('email'))->where('PokemonID', $request['Pokemon'])->update(['Catturato' => true]);
+    }
+
+    public function SocialDex($username = 0){
+        if ($username === 0) {
+            $value = Session::get('email');
+        }
+        else{
+            $value = Utenti::where('Username', $username)->first()->Email;
+        }
+        if($value){
+            $Utente = Utenti::where('Email', $value)->first();
+            $pokemones = $Utente->Pokemons;
+        }
+        $infos = null;
+        foreach ($pokemones as $pokemon){
+            $infos[] = [
+                'Pokemon' => $pokemon,
+                'Catturato' => Incontro::where('PokemonID', $pokemon->id)->where('Utente', Session::get('email'))->first('Catturato')->Catturato,
+            ];
+        }
+        return view('SocialDex', ['Infos' => $infos]);
     }
 }

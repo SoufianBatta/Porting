@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url('css/login.css')}}">
     <link rel="stylesheet" href="{{url('css/common.css')}}">
+    <link rel="stylesheet" href="{{url('css/login.css')}}">
     <script src="{{ url('js/login.js') }}" defer></script>
     <title>Login</title>
 </head>
@@ -20,7 +20,7 @@
         </div>
         <img src="{{ url('Images/Index/footer.gif') }}">
     </section>
-    <section id="Content">
+    <section id="content">
         <form method='POST' name="login" id="login">
             @csrf
             <div>

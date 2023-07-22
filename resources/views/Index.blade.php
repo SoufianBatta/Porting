@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url('css/index.css') }}">
     <link rel="stylesheet" href="{{ url('css/common.css') }}">
+    <link rel="stylesheet" href="{{ url('css/index.css') }}">
+
     <title>Index</title>
 </head>
 <body>
@@ -25,10 +26,10 @@
                 <p>
                     Qui Potrai Catturare tutti i tuoi Pokemon preferiti ti bastera superare delle sfide per poi scoprire quale pokemon hai catturato
                 </p>
-                <img src="{{ url('Images\Index\test.webp') }}">
+                <div><img src="{{ url('Images\Index\test.webp') }}"></div>
             </div>
             <div class="preview">
-               <img src="{{ url('Images\Index\catchemall.webp') }}">
+               <div><img src="{{ url('Images\Index\catchemall.webp') }}"></div>
                <p>
                     Mostra a tutti i Pokemon che hai catturato, pubblica nella tua bacheca i pokemon piu' belli e vantati di essere un allenatore micidiale!
                 </p>
@@ -37,7 +38,7 @@
                 <p>
                     potrai cercare nel tuo personale SocialDex tutti i pokemon che hai catturato e le loro caratteristiche
                 </p>
-                <img src="{{ url('Images\Index\pokedex.jpg') }}">
+                <div><img src="{{ url('Images\Index\pokedex.jpg') }}"></div>
             </div>
         </div>
     </section>

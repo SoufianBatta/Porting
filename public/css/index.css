@@ -1,21 +1,8 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     background-color: #dbd8c7;
-    margin: 0px;
 }
 /* CONTENT */
-#content{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 5vw;
-    width: 100%;
-    height: 60%;
-}
+
 #main_content{
     width: 100%;
     height: 100%;
@@ -33,20 +20,28 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    height: 30%;
+    height: 80%;
     box-sizing: border-box;
-    padding: 2vh 2vw;
+    margin: 2vh 0 2vh 0;
     border-radius: 20px;
     border: 3px groove #dbd8c7;
-    position: relative;
     background-color: black;
 }
-.preview img {
-    width: 40%;
-    height: 90%;
-    box-sizing: border-box;
-    padding: 10px;
-    filter: saturate(0);
+.preview div{
+    width: 30%;
+    height: 80%;
+    margin: 2vw;
+    border-radius: 20% 50%;
+    position: relative;
+    overflow: hidden;
+}
+.preview img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: content-box;
 }
 .preview p{
     width: 60%;
@@ -56,31 +51,6 @@ body {
     text-align: left;
     padding: 10px;
     text-transform: capitalize;
-}
-#buttons {
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    margin: 20px;
-}
-#buttons a {
-    font-size: calc(1.8vh + 2vw);
-    text-decoration: none;
-    color: black;
-    border-radius: 50% 50% / 10% 20%;
-    border: 3px solid;
-    background-color: #dbd8c7;
-    padding: 5px;
-}
-
-#buttons a:hover{
-    transition-duration: 1s;
-    background-color: black;
-    color: red;
-}
-#buttons a:not(hover){
-    transition-duration: .5s;
 }
 
 .preview:hover{
@@ -103,21 +73,22 @@ body {
 @media screen and (max-width: 600px) {
     #content {
         padding: 1vw;
+        height: 800px;
     }
     #header {
-        height: 20vh;
+        height: 300px;
     }
     #footer {
-        height: 20vh;
+        height: 150px;
     }
     .preview{
         padding: 0;
         height: 20%;
     }
-    .preview img{
-        width: 60%;
+    .preview div{
+        width: 50%;
     }
     .preview p{
-        width: 40%;
+        width: 50%;
     }
 }

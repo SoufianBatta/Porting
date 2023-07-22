@@ -1,5 +1,4 @@
 
-
 #background_body{
     position: absolute;
     top: 0;
@@ -8,12 +7,7 @@
     height: 100%;
     z-index: -5;
 }
-#content {
-    display: flex;
-    width: 100%;
-    height: 60%;
-    justify-content: center;
-}
+
 #profile {
     height: 100%;
     width: 80%;
@@ -21,7 +15,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #00000055;
     background-clip: content-box;
@@ -81,4 +75,10 @@
 }
 #info span:not(hover){
     transition-duration: .5s;
+}
+
+@media screen and (max-width: 700px) {
+    #content {
+        height: 800px;
+    }
 }
