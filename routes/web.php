@@ -37,4 +37,4 @@ Route::get('/HomePage/Pokebattle',[PokemonController::class, 'ViewPokebattle'])-
 Route::get('/api/GetPokemon/{pokemon}',[PokemonController::class, 'GetPokemon']);
 Route::post('/api/RegistraIncontro', [PokemonController::class, 'RegistraIncontro']);
 Route::post('/api/CatturaPokemon', [PokemonController::class, 'CatturaPokemon']);
-Route::get('/HomePage/SocialDex/{user?}', [PokemonController::class, 'SocialDex']);
+Route::get('/HomePage/SocialDex/{user?}', [PokemonController::class, 'SocialDex'])->name('SocialDex');

@@ -15,7 +15,7 @@
         <div id="header_content">
             <div id="navbar">
                 <a href="{{ route('Pokebattle') }}">ALL'AVVENTURA</a>
-                <a href="socialdex_view.php">SOCIALDEX</a>
+                <a href="{{ route('SocialDex')}}">SOCIALDEX</a>
                 <a href="{{ route('Logout') }}">ESCI</a>
             </div>
             <div id="header_title">
