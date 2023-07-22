@@ -4,10 +4,10 @@ reset();
 const desc = {
     nome: "Inserire il Proprio Nome All'interno",
     cognome: "Inserire il Proprio Cognome All'interno",
-    email: "Inserire La Email All'interno",
+    email: "Inserire La Email All'interno, Potrai Utilizzare Una Sola Email Per Ogni Account",
     telefono: "Inserire il Telefono All'interno",
-    username: "Inserire Lo Username All'interno",
-    password: "Inserire La Password All'interno, assicurarsi che la password contiene almeno 8 caratteri, un carattere maiuscolo, minuscolo, un carattere speciale ed un numero"
+    username: "Inserire Lo Username All'interno, Verra' Utilizzato Dagli Altri Utenti Per Scoprire Quali Pokemon Hai Incontrato e Catturato",
+    password: "Inserire La Password All'interno, assicurarsi che la password contiene almeno <br> 8 caratteri,<br> un carattere maiuscolo,<br> un carattere minuscolo,<br> un carattere speciale<br> un numero"
 };
 console.log(desc.nome);
 function checknullvalues(event){
@@ -15,6 +15,7 @@ function checknullvalues(event){
     reset();
     let OK = true;
     for (const label of labels) {
+        console.log(label);
         const input = label.querySelector('input') 
         if (input.value === '') {
             OK = false;
@@ -30,11 +31,10 @@ function checknullvalues(event){
                 const errore = document.createElement('div');
                 errore.id = 'Errore';
                 errore.innerHTML = 'ATTENZIONE LA PASSWORD NON RISPETTA I REQUISITI';
-                document.getElementById('Content').appendChild(errore);
+                document.getElementById('content').appendChild(errore);
             }
         }
     }
-
     if (!OK) {
         event.preventDefault();
     }

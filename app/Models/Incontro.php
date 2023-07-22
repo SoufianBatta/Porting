@@ -12,6 +12,7 @@ class Incontro extends Model
     public $incrementing = false;
     protected $table = 'incontro';
 
+    public $timestamps = false;
     protected $attributes = [
         'Catturato' => false,
     ];

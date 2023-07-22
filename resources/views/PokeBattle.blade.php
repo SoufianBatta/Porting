@@ -16,7 +16,7 @@
                 <a href="{{ route('HomePage') }}">Torna Indietro</a>
             </div>
             <div id="header_title">
-                Accedi nel mondo Del SocialDex
+                Cattura Il Pokemon!
             </div>
         </div>
         <img src="{{ url('Images/Index/footer.gif') }}">

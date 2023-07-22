@@ -1,69 +1,7 @@
-fetch("http://localhost/hw1/get_pokemonTile.php").then(onresp);
-function onresp(response){
-    if(response.ok){
-        response.json().then(onjson);
+const form = document.forms['search'];
+form.addEventListener('submit', function(event){
+    if (event.currentTarget.elements[1].value === ''){
+        event.preventDefault();
+        console.log('Annullato');
     }
-}
-function onjson(body){
-    console.log(body);
-    const SocialDex = document.getElementById('SocialDex');
-    for (const pokemon of body) {
-        const img = document.createElement('img');
-        img.src = pokemon.img;
-        const image = document.createElement('div');   
-        image.id = 'image';
-        image.appendChild(img);
-        const name = document.createElement('span');
-        name.innerHTML ="Name : "+ pokemon.name;
-        const type1 = document.createElement('span');
-        type1.innerHTML = "Type 1 : " + pokemon.type_1;
-        type1.id = pokemon.type_1;
-        const seen = document.createElement('div');
-        seen.id = 'seen';
-        seen.appendChild(name);
-        seen.appendChild(type1);
-        if(pokemon.type_2){
-            const type2 = document.createElement('span');
-            type2.innerHTML ="Type 2 : " +pokemon.type_2;
-            type2.id = pokemon.type_2;
-            seen.appendChild(type2);
-        }
-        const hp = document.createElement('span');
-        const attack = document.createElement('span');
-        const defense = document.createElement('span');
-        const sp_attack = document.createElement('span');
-        const sp_defense = document.createElement('span');
-        const speed = document.createElement('span');
-        const height = document.createElement('span');
-        const weight = document.createElement('span');
-        const captured = document.createElement('div');
-        captured.classList.add('captured');
-        if (pokemon.catturato == 0){
-            captured.classList.add('hidden');
-        }
-        hp.innerHTML ="HP : " + pokemon.hp;
-        attack.innerHTML = "Attack : " + pokemon.attack;
-        defense.innerHTML = "Defense : " + pokemon.defense;
-        sp_attack.innerHTML = "Special Attack : " + pokemon.special_attack;
-        sp_defense.innerHTML = "Special Protection : " + pokemon.special_defense;
-        speed.innerHTML = "Speed : " + pokemon.speed;
-        height.innerHTML = "Height : " + pokemon.height;
-        weight.innerHTML = "Weight : " + pokemon.weight;
-        captured.appendChild(hp);
-        captured.appendChild(defense);
-        captured.appendChild(sp_attack);
-        captured.appendChild(sp_defense);
-        captured.appendChild(speed);
-        captured.appendChild(height);
-        captured.appendChild(weight);
-        const info = document.createElement('div');
-        info.id = 'info';
-        info.appendChild(seen);
-        info.appendChild(captured);
-        const pokemons = document.createElement('div');
-        pokemons.id = "Pokemon";
-        pokemons.appendChild(image);
-        pokemons.appendChild(info);
-        SocialDex.appendChild(pokemons);
-    }
-}
+});

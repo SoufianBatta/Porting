@@ -20,7 +20,7 @@
         </div>
         <img src="{{ url('Images/Index/footer.gif') }}">
     </section>
-    <section id="Content">
+    <section id="content">
         <div id="SigninForm">
             <form method='post' name='signin' id="signin">
                 @csrf

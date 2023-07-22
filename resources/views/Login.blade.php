@@ -40,11 +40,11 @@
             Non sei ancora Registrato? <a href="{{ route('Signin') }}">Registrati Ora</a>
         </div>
         @if (isset($Errore) && $Errore === 'Password')
-        <div id="internal_error">
+        <div id="Errore">
             <h1>ATTENZIONE PASSWORD ERRATA</h1>
         </div>
         @elseif (isset($Errore) && $Errore === 'Username')
-        <div id="internal_error">
+        <div id="Errore">
             <h1>ATTENZIONE L'USERNAME NON ESISTE</h1>
         </div>
         @endif

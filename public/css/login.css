@@ -52,6 +52,7 @@
     align-items: flex-start;
     line-height: calc(5.5vh);
     color: red;
+
 }
 #login input{
     background-color: rgb(255,255,255,0.5);
@@ -70,10 +71,13 @@
 .hidden {
     display: none;
 }
-#internal_error{
-    height: 20%;
-    font-size: calc((.5vw + .3vh));
+#Errore{
+    font-size: calc((.5vw + 1.3vh));
     color: red;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid red;
+    box-sizing: border-box;
+    padding: 20px;
 }
 #sign{
     margin:2vh 0 2vh 0;

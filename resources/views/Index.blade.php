@@ -31,7 +31,7 @@
             <div class="preview">
                <div><img src="{{ url('Images\Index\catchemall.webp') }}"></div>
                <p>
-                    Mostra a tutti i Pokemon che hai catturato, pubblica nella tua bacheca i pokemon piu' belli e vantati di essere un allenatore micidiale!
+                    Mostra a tutti i Pokemon che hai catturato, nel SocialDex saranno presenti tutti i Pokemon che hai incontrato e catturato, vantati di essere un allenatore micidiale!
                 </p>
             </div>
             <div class="preview">

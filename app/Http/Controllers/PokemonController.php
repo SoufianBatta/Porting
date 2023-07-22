@@ -57,25 +57,18 @@ class PokemonController extends Controller
             'Utente' => Session::get('email')
         ];
         if (!Incontro::where('Utente', $incontro['Utente'])->where('PokemonID', $incontro['PokemonID'])->exists()) {
+            Incontro::unguard();
             Incontro::create($incontro);
+            Incontro::reguard();
         }
         return ['Token' => csrf_token()]; 
     }
     public function CatturaPokemon(Request $request){
         Incontro::where('Utente', Session::get('email'))->where('PokemonID', $request['Pokemon'])->update(['Catturato' => true]);
     }
-
-    public function SocialDex($username = 0){
-        if ($username === 0) {
-            $value = Session::get('email');
-        }
-        else{
-            $value = Utenti::where('Username', $username)->first()->Email;
-        }
-        if($value){
-            $Utente = Utenti::where('Email', $value)->first();
-            $pokemones = $Utente->Pokemons;
-        }
+    public function PersonalSocialDex(){
+        $Utente = Utenti::where('Email', Session::get('email'))->first();
+        $pokemones = $Utente->Pokemons;
         $infos = null;
         foreach ($pokemones as $pokemon){
             $infos[] = [
@@ -84,5 +77,24 @@ class PokemonController extends Controller
             ];
         }
         return view('SocialDex', ['Infos' => $infos]);
+    }
+    public function SocialDex(Request $request){
+        $username = $request->input('username');
+        $Utente = Utenti::where('Username', $username)->first();
+        if($Utente){
+            $pokemones = $Utente->Pokemons;
+            $infos = null;
+            foreach ($pokemones as $pokemon){
+                $infos[] = [
+                    'Pokemon' => $pokemon,
+                    'Catturato' => Incontro::where('PokemonID', $pokemon->id)->where('Utente',$Utente->Email)->first('Catturato')->Catturato,
+                ];
+            }
+            return view('SocialDex', ['Infos' => $infos]);
+        }
+        else
+        {
+            return view('SocialDex', ['Errore' => true]);
+        }
     }
 }
