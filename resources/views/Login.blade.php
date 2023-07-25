@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{url('css/common.css')}}">
     <link rel="stylesheet" href="{{url('css/login.css')}}">
     <script src="{{ url('js/login.js') }}" defer></script>
+    <script src="{{url('js/common.js')}}" defer></script>
     <title>Login</title>
 </head>
 <body>
@@ -12,6 +13,10 @@
     <section id="header">
         <div id="header_content">
             <div id="navbar">
+                <a class="nav_element" href="{{ route('Index') }}">Torna Indietro</a>
+                <button class="buttonMenu"><img src="{{url('Images/open.png')}}"></button>
+            </div>
+            <div id="menuOverlay">
                 <a href="{{ route('Index') }}">Torna Indietro</a>
             </div>
             <div id="header_title">

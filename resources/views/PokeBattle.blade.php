@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ url('js/pokebattle.js') }}" defer="true"></script>
+    <script src="{{ url('js/pokebattle.js') }}" defer></script>
+    <script src="{{url('js/common.js')}}" defer></script>
     <link rel="stylesheet" href="{{ url('css/common.css')}}">
     <link rel="stylesheet" href="{{ url('css/pokebattle.css') }}">
     <title>Documents</title>
@@ -13,6 +14,10 @@
     <section id="header">
         <div id="header_content">
             <div id="navbar">
+                <a class="nav_element" href="{{ route('HomePage') }}">Torna Indietro</a>
+                <button class="buttonMenu"><img src="{{url('Images/open.png')}}"></button>
+            </div>
+            <div id="menuOverlay">
                 <a href="{{ route('HomePage') }}">Torna Indietro</a>
             </div>
             <div id="header_title">

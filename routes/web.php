@@ -32,7 +32,6 @@ Route::post('/signin',[SigninController::class, 'Signin'])->name('Signin');
 Route::get('/HomePage',[HomePageController::class, 'ViewHomePage'])->name('HomePage');
 Route::get('/HomePage/logout',[HomePageController::class, 'Logout'])->name('Logout');
 Route::any('/HomePage/ChangeAvatar',[HomePageController::class, 'ChangeAvatar'])->name('ChangeAvatar');
-Route::any('/HomePage/ShowRequest',[HomePageController::class, 'ShowRequest']);
 Route::get('/HomePage/Pokebattle',[PokemonController::class, 'ViewPokebattle'])->name('Pokebattle');
 Route::get('/api/GetPokemon/{pokemon}',[PokemonController::class, 'GetPokemon']);
 Route::post('/api/RegistraIncontro', [PokemonController::class, 'RegistraIncontro']);

@@ -23,6 +23,9 @@ class HomePageController extends Controller
     }
 
     public function ChangeAvatar(Request $request){
+        if (!Session::has('email')) {
+            return redirect('/');
+        }
         if ($request->hasFile('Propic') && $request->file('Propic')->isValid()) {
             // get Illuminate\Http\UploadedFile instance
             $image = $request->file('Propic');

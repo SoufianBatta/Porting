@@ -4,13 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url('css/common.css') }}">
     <link rel="stylesheet" href="{{ url('css/index.css') }}">
-
+    <script src="{{url('js/common.js')}}" defer></script>
     <title>Index</title>
 </head>
 <body>
     <section id="header">
         <div id="header_content">
             <div id="navbar">
+                <a class="nav_element" href="{{ route('Login') }}">Accedi</a>
+                <a class="nav_element" href="{{ route('Signin') }}">Iscriviti</a>
+                <button class="buttonMenu"><img src="{{url('Images/open.png')}}"></button>
+            </div>
+            <div id="menuOverlay">
                 <a href="{{ route('Login') }}">Accedi</a>
                 <a href="{{ route('Signin') }}">Iscriviti</a>
             </div>

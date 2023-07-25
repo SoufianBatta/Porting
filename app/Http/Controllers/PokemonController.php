@@ -14,6 +14,9 @@ class PokemonController extends Controller
 {
     //
     public function ViewPokebattle(){
+        if (!Session::has('email')) {
+            return redirect('/');
+        }
         return view('PokeBattle');
     }
     public function GetPokemon( $pokemonp) {
@@ -67,6 +70,9 @@ class PokemonController extends Controller
         Incontro::where('Utente', Session::get('email'))->where('PokemonID', $request['Pokemon'])->update(['Catturato' => true]);
     }
     public function PersonalSocialDex(){
+        if (!Session::has('email')) {
+            return redirect('/');
+        }
         $Utente = Utenti::where('Email', Session::get('email'))->first();
         $pokemones = $Utente->Pokemons;
         $infos = null;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url('css/common.css')}}">
     <link rel="stylesheet" href="{{ url('css/homepage.css') }}">
     <script src="{{ url('js/homepage.js') }}" defer></script>
+    <script src="{{url('js/common.js')}}" defer></script>
     <title>Homepage</title>
 </head>
 <body>
@@ -14,6 +15,12 @@
     <section class="init" id="header">
         <div id="header_content">
             <div id="navbar">
+                <a class="nav_element" href="{{ route('Pokebattle') }}">ALL'AVVENTURA</a>
+                <a class="nav_element" href="{{ route('SocialDex')}}">SOCIALDEX</a>
+                <a class="nav_element" href="{{ route('Logout') }}">ESCI</a>
+                <button class="buttonMenu"><img src="{{url('Images/open.png')}}"></button>
+            </div>
+            <div id="menuOverlay">
                 <a href="{{ route('Pokebattle') }}">ALL'AVVENTURA</a>
                 <a href="{{ route('SocialDex')}}">SOCIALDEX</a>
                 <a href="{{ route('Logout') }}">ESCI</a>
